@@ -1,0 +1,72 @@
+
+<!doctype html>
+
+<html>
+  <!-- Seccion head -->
+  <head>
+     <!-- indicar la familia de caracteres a usar -->
+     <meta charset="utf-8" />
+     <title>Ejemplo inicial HTML</title>
+	 <!-- indicar el estilo del documento, usando CSS -->
+	 <style>
+	   body { 
+	     background-color: #FFAA55;
+	   }
+	   p {
+	      background-color: #31FF75;
+	   }
+	   h1,h2 {
+	       background-color: #5175FF;
+		   font-family: sans-serif;
+		   font-size: 220%;
+	   }
+	 </style>
+	 <!-- ejemplo de javascript -->
+	 <script>
+	   var variable=0;
+	   function funcion01() {
+	     variable = variable +1 ;
+	   }
+	   function desplegar() {
+	      document.getElementById("variable").innerHTML=
+		    "Valor de variable es " + variable;
+	   }
+	   function forma_onsubmit() {
+	      funcion01();
+		  funcion01();
+		  desplegar();
+		  return false;  //no volver a cargar la pagina
+	   }
+	   function inicializar() {
+	      funcion01();
+		  desplegar();
+		  document.getElementById("forma").
+		  onsubmit = forma_onsubmit;
+
+	   }
+	   window.onload = inicializar;
+	 </script>
+  </head>
+  <!--Seccion body -->
+  <body>
+     <h1>HTML 123</h1>
+	 <p> Este ejemplo muestra como funciona HTML, de 
+	 manera basica pero permite mostrar su estructura y
+     relacion con CSS y JavaScript	 
+	 </p>
+	 <h2>Algunos elementos basicos de HTML</h2>
+	 <p>El elemento img sirve para mostrar imagenes</p>
+	 <img src="http://s.libertaddigital.com/fotos/noticias/el-hobbit-2.jpg"/>
+	 <p>El elemento a (anchor) sirve para definir
+	    hiperligas, dando un URL. <br/> 
+	    Esta es la
+		<a href="http://starwars.com">hiperliga</a>
+     </p>
+     <h3>Elementos de forma de captura</h3>
+     <form id="forma">
+       Dame un texto:<input type="text" name="texto01"/><br/>
+	   <input type="submit" value="Enviar ..."/><br/>
+	   <span id="variable">valor de la variable aqui</span>
+     </form> 	 
+  </body>
+</html>

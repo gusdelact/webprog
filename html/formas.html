@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html>
+ <head>
+   <title>Formas HTML</title>
+   <meta charset="utf-8">
+ </head>
+ <body>
+ <h1>Elementos simples</h1>
+<form name="forma01" method="get">
+ <label for="texto01">Campo input text</label>
+ <input type="text" name="input_text" id="texto01"/> 
+ <br/>
+ <input type="submit" value="Enviar" />
+ <input type="reset" value="Limpiar" />
+</form>
+ <h1>Elementos de captura password, radio
+checkbox, button,hidden</h1>
+ <form name="forma02" method="get">
+	<label for="texto02">Usuario</label>
+	<input type="text" id="texto02" name="input_text" /><br/>
+	<label for="pass01">Contrase&ntilde;a</label>
+	<input type="password" id="pass01" name="input_pass" /><br/>
+	<label for="chkbox01">Usuario interno</label>
+	<input type="checkbox" id="chkbox01" name="input_checkbox" /><br/>
+	<label for="sexo">Radio button</label>
+	<input type="radio" name="input_radio" 
+	  id="sexo" value="hombre">Hombre
+	<input type="radio" value="mujer"
+	  name="input_radio" >Mujer<br/>
+	<label for="button01">Verificar</label>
+	<input type="button" 
+	  value="boton" id="button01" name="input_button"/>
+	 <br/>
+	<input type="hidden" name="en_sesion" value="no_login"/>
+    <input type="submit" value="Enviar" />
+    <input type="reset" value="Limpiar" />
+ </form>
+  <h1>Elementos select,textarea, button</h1>
+  <form name="forma03" method="get">
+     <label for="select01">Comida</label>
+     <select id="select01" name="seleccion">
+	   <option value="jamon">Jam&oacute;n</option>
+	   <option value="queso">Queso</option>
+	   <option value="crema">Crema</option>
+	   <option value="leche">Leche</option>
+	 </select>
+	 <br/><br/>
+	 <label for="select02">Multiple</label>
+     <select id="select02" 
+	  multiple="multiple" name="multipleseleccion">
+	   <option value="jamon">Jam&oacute;n</option>
+	   <option value="queso">Queso</option>
+	   <option value="crema">Crema</option>
+	   <option value="leche">Leche</option>
+	 </select>
+	 <br/>
+	 <label for="ta01">Area de texto</label>
+	 <textarea id="ta01" name="textarea_01" 
+	    rows="4" cols="50"></textarea>
+     <br/>
+	 <input type="submit" value="Enviar" />
+     <input type="reset" value="Limpiar" />
+  </form>
+ </body>
+</html>

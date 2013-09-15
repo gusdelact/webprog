@@ -1,0 +1,121 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Ejemplo de tablas HTML</title>
+	<meta charset="utf-8" >
+  </head>
+  <body>
+     <h1> Uso de tablas </h1>
+	 <h2>Tabla basica</h2>
+	 <table border="1">
+	   <tr>
+	     <th>Columna 1</th>
+		 <th>Columna 2</th>
+	   </tr>
+	   <tr>  
+		 <td>Renglon 1, Columna 1</td>
+		 <td>Renglon 1, Columna 2</td>
+	   </tr>
+	   <tr>  
+		 <td>Renglon 2, Columna 1</td>
+		 <td>Renglon 2, Columna 2</td>
+	   </tr>
+	 </table>
+	 <h2>Tabla anidada</h2>
+	 <table border="1">
+	   <tr> 
+	     <td>
+		   <table border="1">
+		     <tr>
+			   <td>OR</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>0</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>1</td><td>1</td><td>1</td>
+			 </tr>
+		   </table>
+		 </td>
+		 <td>
+		   <table border="1">
+		     <tr>
+			   <td>AND</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>0</td><td>0</td><td>0</td>
+			 </tr>
+			 <tr>
+			   <td>1</td><td>0</td><td>1</td>
+			 </tr>
+		   </table>
+		 </td>
+	   </tr>
+	   <tr>
+	     <td>
+		   <table border="1">
+		     <tr>
+			   <td>XOR</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>0</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>1</td><td>1</td><td>0</td>
+			 </tr>
+		   </table>
+		 </td>
+		 <td>
+		   <table border="1">
+		     <tr>
+			   <td>NAND</td><td>0</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>0</td><td>1</td><td>1</td>
+			 </tr>
+			 <tr>
+			   <td>1</td><td>1</td><td>0</td>
+			 </tr>
+		   </table>
+		 </td>	   
+	   </tr>
+	 </table>
+	 <h2>Tabla con columnas dispares</h2>
+	 <table border="1" cellpadding="10">
+	   <tr>
+	     <th colspan="2">Titulo</th>
+	   </tr>
+	   <tr>
+	     <td colspan="2">Celda 0</td>
+	   </tr>
+	   <tr>
+	     <th>Celda 1</th>
+		 <th>Celda 2</th>
+	   </tr>
+	   <tr>
+	      <td >Valor 1</td>
+		  <td>Valor 2</td>
+	   </tr>
+	   <tr>
+	      <td rowspan="3">Valor 3</td>
+		  <td>Valor 4</td>
+	   </tr>
+	   <tr>
+	     <td>Valor 5</td>
+	   </tr>
+	   <tr>
+	     <td>Valor 6</td>
+	   </tr>
+	   <tr>
+	     <td colspan="2">
+		   <ul>
+		     <li>Elemento 1</li>
+			 <li>Elemento 2</li>
+			 <li>Elemento 3</li>
+		   </ul>
+		 </td>
+	   </tr>
+	 </table>
+  </body>
+</html>

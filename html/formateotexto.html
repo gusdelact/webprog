@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html>
+ <head>
+   <title>Etiquetas para formatear texto</title>
+   <meta charset="utf-8" >
+ </head>
+ <body>
+   <h1>Indice</h1>
+   <ul>
+     <li><a href="#p01">Etiquetas b, strong, em, i, small
+	 ,sup,sub</a>  </li>
+	 <li><a href="#p02">Etiqueta pre</a>  </li>
+	 <li><a href="#p03">Etiqueta code, kbd,sample,var</a></li>
+	 <li><a href="#p04">Etiqueta address</a></li>
+	 <li><a href="#p05">Etiqueta abbr</a></li>
+	 <li><a href="#p06">Etiqueta bdo</a></li>
+	 <li><a href="#p07">Etiqueta blockquote y b</a></li>
+	 <li><a href="#p08">Etiqueta del,ins y mark</a></li>
+	 <li><a href="#p09">Etiqueta cite y dfn</a></li>
+   </ul>   
+   <h2> <a id="p01"> Formato de texto </a></h2>
+   <p>
+      El texto est&aacute; en <b>bold</b> <br/>
+	  El texto est&aacute; en <strong>strong</strong><br/>
+	  Un texto con <em>&eacute;nfasis</em><br/>
+	  Un texto en <i>it&aacute;lica</i><br/>
+	  Un texto <small>peque&ntilde;o</small><br/>
+	  La formula mas famosa es <em>E=mc<sup>2</sup></em><br/>
+	  Para vivir todos necesitamos de 
+	  <i>H<sub>2</sub>O</i>
+   </p>
+   <h2><a id="p02">Texto preformateado</a></h2>
+   <pre>
+Este texto tiene             espacios que se respetan y
+	 
+	 los saltos de carro 
+	 
+	 tambien
+   </pre>
+   <pre>
+     public class Main {
+	    public static void main(String [] args) {
+		   System.out.println("Hola mundo");
+           for (int i=0;i&#60;10; i++) {
+              System.out.println("Ciclo "+i);
+           }		   
+		}
+	 }
+   </pre> 
+   <h2><a id="p03">Texto con distintos formatos</a></h2>
+   <code>Texto con fuente tipo programa computadora</code>
+   <br/>
+   <kbd>Texto tipo entrada de teclado</kbd><br/>
+   <samp>Texto tipo ejemplo</samp><br/>
+   <var>Texto tipo variables de un programa</var><br/>
+   <h2>Manejo de direcciones</h2>
+   <address id="p04">
+     Universidad La Salle. <br/>
+	 Benjamin Franklin No. 146. <br/>
+	 Col. Condesa. <br/>
+	 M&eacute;xico, D.F. <br/>
+	 <img alt="logoulsa" src="http://rci.org.mx/images/LOGOS%20RCI/logoUlsa.gif" />
+   </address>
+   <h2><a id="p05">Texto con acronimos y abreviaciones</a></h2>
+   <p>
+     <abbr title="Estados Unidos de Am&eacute;rica">
+	 EUA</abbr> d&iacute;a independica es 4 de julio.<br/>
+	 <abbr title="Keep it simple stupid">
+	 KISS</abbr> es un consejo de programaci&oacute; a seguir<br/>
+   </p>
+   <h2><a id="p06">Direcci&oacute;n del texto</a></h2>
+   <!-- bidirectional override -->
+   <bdo dir="rtl">hola</bdo> y normal 
+   es <bdo dir="rtl">soida</bdo>
+   <h2><a id="p07">
+   Textos y parrafos Entre comillados o como una cita 
+   </a></h2>
+   <p>El elemento blockquote especifica un texto que es tomado
+   de una cita de una persona. Debe indentar  el texto 
+   </p>
+   <blockquote>
+     Contra la estupidez los propios dioses luchan en vano
+   </blockquote>
+   <p>
+     Esta es un texto 
+	 <b>importante, siempre validen sint&aacute;xis</b>
+	 de su archivo HTML.
+   </p>
+   <h2><a id="p08">Para indicar texto borrado o insertado</a>
+   </h2>
+   <p>
+   Este <del>texto</del> ya no debe ir en la 
+   revisi&oacute;n final <br/>
+   Este <ins>texto</ins> es importante que se incluya<br/>
+   <mark>Texto marcado</mark> por el editor
+   </p>
+   <h2><a id="p09">Citas y definiciones</a></h2>
+   <p>
+     <cite>El entorno de programaci&oacute;n UNIX</cite> fue
+	 escrito por Kernighan y Pike <br/>
+     <dfn>Java es un lenguaje de programaci&oacute;n</dfn>
+   </p>
+   </body>
+</html>
+
