@@ -51,6 +51,20 @@ function rutina01(solicitud,respuesta)
     }
 	);
 }//rutina01
+//rutina02 y funciones auxiliares
+function imagen_sexo(sexo) {
+ var etiqueta_imagen='<img alt="'+sexo+'"'+ ' src="images/'+ 
+ sexo  +'.png"/>';
+ return etiqueta_imagen;
+}
+function imagen_interno(esInterno) {
+ if (esInterno!=null) {
+  var etiqueta_imagen='<img alt="interno" src="images/login.jpg"/>';
+  return etiqueta_imagen;
+ } else {
+    return "usuario externo";
+ }
+}
 function rutina02(solicitud,respuesta)  
 {
   var dato='';
@@ -61,18 +75,66 @@ function rutina02(solicitud,respuesta)
   );
   solicitud.on('end', 
     function() {
-	     respuesta.writeHead(200,{'Content-Type':'text/plain'} );
-	     respuesta.write(dato.toString());
+	     var texto = dato.toString();
+		 var params = querystring.parse(texto);
+		 var sexo = params['input_radio'];
+		 var interno = params['input_checkbox'];
+		 var contenido= 
+		 '<!doctype html>' +
+		 '<html>' +
+		 '<head>' + "<meta charset='utf-8'>"+'<title>Respuesta 02</title>'+
+		 '</head>' +
+		 '<body>' +
+		 '<ul>'+ 
+		 '<li>usuario:'+ params['input_text']+'</li>'+
+		 '<li>password:'+ params['input_pass']+'</li>'+
+		 '<li>'+ imagen_interno(interno) +'</li>'+
+		 '<li>'+ imagen_sexo(sexo)+'</li>'+
+		 '</ul>'+
+		 '<input type="hidden" value="en_login"/>'
+		 '</body>' +
+		 '</html>' ;
+	     respuesta.writeHead(200,{'Content-Type':'text/html'} );
+	     respuesta.write(contenido);
          respuesta.end();
      }	
   );
 } //rutina02
+//rutina03
+function rutina03(solicitud,respuesta) {
+  var datos='';
+  solicitud.on('data',
+    function(buffer) 
+	{
+	   datos+=buffer;
+	}
+  );
+  solicitud.on('end',
+    function() 
+	{
+	    //convertir la cadena querystring a un objeto JavaScript
+	    var params = querystring.parse(datos.toString());
+
+	    respuesta.writeHeader(200,{'Content-Type':'text/plain'} );
+		respuesta.write(datos.toString()+'\n');
+		//recorrer el objeto JavaScript, propiedad por propiedad
+		//observar que el campo select calificado como multiple 
+		//tiene un arreglo de valores asociados
+		for (var variable in params) 
+		{
+		  respuesta.write(variable + ':' + params[variable]+'\n'); 
+		}
+		respuesta.end();
+	}
+  );
+}//rutina03
 //objeto de JScript que contiene la cadena de la ruta y su respectiva funcion
 //a invocar. Para agregar nuevas rutas que se asocien a funciones, se
 //debe editar esta estructura de datos
 var rutas = {
                 '/proc_forma01' : rutina01 ,
-                '/proc_forma02' : rutina02				
+                '/proc_forma02' : rutina02,
+                '/proc_forma03'	: rutina03			
             };
   
 //registra que para el evento de solicitud al servidor, utilice la función
