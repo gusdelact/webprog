@@ -157,33 +157,41 @@ server.on('request',
      //si la URL no esta registrada, se debe entregar contenido estatico
 	 //y disponible en el directorio htdocs
 	 //indicar la ruta del sistema de archivos donde pueden estar los recursos
-       var ruta = 'htdocs' + request.url;
+          var ruta = 'htdocs' + request.url;
 	 //identificar el tipo MIME dada la URL solicitada
 	   var tipo= mime.lookup(request.url);
-	   //obtener el flujo de lectura del archivo solicitado
-	   var entrada=fs.createReadStream(ruta);
+           var existe=fs.existsSync(ruta); 
+           console.log('Ruta :' + ruta + ' '+ existe);
+           if (existe && request.url!= '/' ) {
+	     //obtener el flujo de lectura del archivo solicitado
+	     var entrada=fs.createReadStream(ruta);
 	  //indicar que el recurso se entrego bien (codigo 200 HTTP)
      // e indica el tipo de dato a entregar
-	   response.writeHead(200,{'Content-Type': tipo } );
+	     response.writeHead(200,{'Content-Type': tipo } );
 	   //en el caso de que se idenfique que la respuesta esta en un pipe
 	   //se puede hacer codigo adicional, en este caso solo se imprime 
 	   //a pantalla
-	   response.on('pipe', function(fuente) {
+	     response.on('pipe', function(fuente) {
 		  console.log('Leyendo del pipe ');
-	   });
+	     });
        //leer de manera asincrona el flujo de entrada (asociado al archivo)
 	   //y su contenido volcarlo al flujo de HTTP response
-	   entrada.pipe(response);
+	     entrada.pipe(response);
 	   //en caso de que la lectura del flujo de entrada tenga error, indicar
 	   //al cliente con error 404. Aun no es lo mejor para manejar
 	   //que el archivo no existe
-	   entrada.on('error',function() {
+	     entrada.on('error',function() {
+		 response.statusCode=500;
+		 response.end();	 
+            });
+         } else {
 		 response.statusCode=404;
 		 response.end();	 
-      });
+         }
    } //if
   }//function
  );
-console.log('Servidor en puerto 8888');
+var port = process.env.PORT || 8888;
+console.log('Servidor en puerto '+port);
 //queda escuchando en el puerto TCP 8888
-server.listen(8888);
+server.listen(port);
