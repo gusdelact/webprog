@@ -67,12 +67,39 @@ function rutina02(solicitud,respuesta)
      }	
   );
 } //rutina02
+//cargarArchivo
+function cargarArchivo(solicitud, respuesta)
+{
+  var datos='';
+  var longitud = solicitud.headers['content-length'];
+  var cargados=0;
+
+  respuesta.writeHead(200,{'Content-Type':'text/plain'} );
+  solicitud.on('data', 
+    function(buffer)
+    {
+      cargados += buffer.length;
+      var progreso = (cargados/longitud)*100;
+      console.log("recibiendo datos " + cargados + " de "+longitud+
+      " progreso " + progreso + "%");
+      respuesta.write(" progreso : " + progreso + "%\n");
+      datos+= buffer;
+    }
+  );
+  solicitud.on('end',
+    function()
+    {
+        respuesta.end();
+    } 
+  );
+}
 //objeto de JScript que contiene la cadena de la ruta y su respectiva funcion
 //a invocar. Para agregar nuevas rutas que se asocien a funciones, se
 //debe editar esta estructura de datos
 var rutas = {
                 '/proc_forma01' : rutina01 ,
-                '/proc_forma02' : rutina02				
+                '/proc_forma02' : rutina02,
+                '/archivar'     : cargarArchivo				
             };
   
 //registra que para el evento de solicitud al servidor, utilice la función
