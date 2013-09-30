@@ -51,6 +51,20 @@ function rutina01(solicitud,respuesta)
     }
 	);
 }//rutina01
+//rutina02 y funciones auxiliares
+function imagen_sexo(sexo) {
+ var etiqueta_imagen='<img alt="'+sexo+'"'+ ' src="images/'+ 
+ sexo  +'.png"/>';
+ return etiqueta_imagen;
+}
+function imagen_interno(esInterno) {
+ if (esInterno!=null) {
+  var etiqueta_imagen='<img alt="interno" src="images/login.jpg"/>';
+  return etiqueta_imagen;
+ } else {
+    return "usuario externo";
+ }
+}
 function rutina02(solicitud,respuesta)  
 {
   var dato='';
@@ -61,8 +75,27 @@ function rutina02(solicitud,respuesta)
   );
   solicitud.on('end', 
     function() {
-	     respuesta.writeHead(200,{'Content-Type':'text/plain'} );
-	     respuesta.write(dato.toString());
+	     var texto = dato.toString();
+		 var params = querystring.parse(texto);
+		 var sexo = params['input_radio'];
+		 var interno = params['input_checkbox'];
+		 var contenido= 
+		 '<!doctype html>' +
+		 '<html>' +
+		 '<head>' + "<meta charset='utf-8'>"+'<title>Respuesta 02</title>'+
+		 '</head>' +
+		 '<body>' +
+		 '<ul>'+ 
+		 '<li>usuario:'+ params['input_text']+'</li>'+
+		 '<li>password:'+ params['input_pass']+'</li>'+
+		 '<li>'+ imagen_interno(interno) +'</li>'+
+		 '<li>'+ imagen_sexo(sexo)+'</li>'+
+		 '</ul>'+
+		 '<input type="hidden" value="en_login"/>'
+		 '</body>' +
+		 '</html>' ;
+	     respuesta.writeHead(200,{'Content-Type':'text/html'} );
+	     respuesta.write(contenido);
          respuesta.end();
      }	
   );
@@ -93,12 +126,41 @@ function cargarArchivo(solicitud, respuesta)
     } 
   );
 }
+//rutina03
+function rutina03(solicitud,respuesta) {
+  var datos='';
+  solicitud.on('data',
+    function(buffer) 
+	{
+	   datos+=buffer;
+	}
+  );
+  solicitud.on('end',
+    function() 
+	{
+	    //convertir la cadena querystring a un objeto JavaScript
+	    var params = querystring.parse(datos.toString());
+
+	    respuesta.writeHeader(200,{'Content-Type':'text/plain'} );
+		respuesta.write(datos.toString()+'\n');
+		//recorrer el objeto JavaScript, propiedad por propiedad
+		//observar que el campo select calificado como multiple 
+		//tiene un arreglo de valores asociados
+		for (var variable in params) 
+		{
+		  respuesta.write(variable + ':' + params[variable]+'\n'); 
+		}
+		respuesta.end();
+	}
+  );
+}//rutina03
 //objeto de JScript que contiene la cadena de la ruta y su respectiva funcion
 //a invocar. Para agregar nuevas rutas que se asocien a funciones, se
 //debe editar esta estructura de datos
 var rutas = {
                 '/proc_forma01' : rutina01 ,
                 '/proc_forma02' : rutina02,
+                '/proc_forma03'	: rutina03,			
                 '/archivar'     : cargarArchivo				
             };
   
@@ -122,33 +184,41 @@ server.on('request',
      //si la URL no esta registrada, se debe entregar contenido estatico
 	 //y disponible en el directorio htdocs
 	 //indicar la ruta del sistema de archivos donde pueden estar los recursos
-       var ruta = 'htdocs' + request.url;
+          var ruta = 'htdocs' + request.url;
 	 //identificar el tipo MIME dada la URL solicitada
 	   var tipo= mime.lookup(request.url);
-	   //obtener el flujo de lectura del archivo solicitado
-	   var entrada=fs.createReadStream(ruta);
+           var existe=fs.existsSync(ruta); 
+           console.log('Ruta :' + ruta + ' '+ existe);
+           if (existe && request.url!= '/' ) {
+	     //obtener el flujo de lectura del archivo solicitado
+	     var entrada=fs.createReadStream(ruta);
 	  //indicar que el recurso se entrego bien (codigo 200 HTTP)
      // e indica el tipo de dato a entregar
-	   response.writeHead(200,{'Content-Type': tipo } );
+	     response.writeHead(200,{'Content-Type': tipo } );
 	   //en el caso de que se idenfique que la respuesta esta en un pipe
 	   //se puede hacer codigo adicional, en este caso solo se imprime 
 	   //a pantalla
-	   response.on('pipe', function(fuente) {
+	     response.on('pipe', function(fuente) {
 		  console.log('Leyendo del pipe ');
-	   });
+	     });
        //leer de manera asincrona el flujo de entrada (asociado al archivo)
 	   //y su contenido volcarlo al flujo de HTTP response
-	   entrada.pipe(response);
+	     entrada.pipe(response);
 	   //en caso de que la lectura del flujo de entrada tenga error, indicar
 	   //al cliente con error 404. Aun no es lo mejor para manejar
 	   //que el archivo no existe
-	   entrada.on('error',function() {
+	     entrada.on('error',function() {
+		 response.statusCode=500;
+		 response.end();	 
+            });
+         } else {
 		 response.statusCode=404;
 		 response.end();	 
-      });
+         }
    } //if
   }//function
  );
-console.log('Servidor en puerto 8888');
+var port = process.env.PORT || 8888;
+console.log('Servidor en puerto '+port);
 //queda escuchando en el puerto TCP 8888
-server.listen(8888);
+server.listen(port);
