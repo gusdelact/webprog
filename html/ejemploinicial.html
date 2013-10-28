@@ -1,4 +1,3 @@
-
 <!doctype html>
 
 <html>
@@ -31,17 +30,17 @@
 	      document.getElementById("variable").innerHTML=
 		    "Valor de variable es " + variable;
 	   }
-	   function forma_onsubmit() {
+	   function enviar_onsubmit() {
 	      funcion01();
 		  funcion01();
 		  desplegar();
-		  return false;  //no volver a cargar la pagina
+		  return true;
 	   }
 	   function inicializar() {
 	      funcion01();
 		  desplegar();
-		  document.getElementById("forma").
-		  onsubmit = forma_onsubmit;
+		  document.getElementById("enviar").
+		  onsubmit = enviar_onsubmit;
 
 	   }
 	   window.onload = inicializar;
@@ -63,9 +62,9 @@
 		<a href="http://starwars.com">hiperliga</a>
      </p>
      <h3>Elementos de forma de captura</h3>
-     <form id="forma">
+     <form>
        Dame un texto:<input type="text" name="texto01"/><br/>
-	   <input type="submit" value="Enviar ..."/><br/>
+	   <input id="enviar" type="submit" value="Enviar ..."/><br/>
 	   <span id="variable">valor de la variable aqui</span>
      </form> 	 
   </body>

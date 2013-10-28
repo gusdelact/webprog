@@ -1,0 +1,49 @@
+a {
+  border-style: solid;
+  border-width: 3px;
+}
+a:link {
+  color: #007e7e;
+  font-size: 100%;
+}
+
+a:visited {
+  color: #333333;
+  font-size: 80%;
+  border-width: 1px;
+  border-style: dashed;
+}
+
+a:hover {
+  background: #f88396;
+  color: #0d5353;
+  font-size: 150%;
+  border-width: 5px;
+  border-style: dotted;
+}
+
+.menu {
+  border-style: solid;
+  border-width: 5px;
+  padding: 2px;
+}
+.menu div:first-child {
+  border-style: dashed;
+  border-width: 10px;
+  padding: 5px;
+  background-color:yellow;
+}
+.menu div:before {
+ content: " antes ";
+}
+.menu div:after {
+ content: " comentario ";
+}
+
+.menu div:last-child {
+  color:red;
+}
+
+.menu div:nth-child(3) {
+  color:blue;
+}

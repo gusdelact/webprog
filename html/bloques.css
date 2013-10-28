@@ -1,0 +1,51 @@
+div.primero 
+{
+  background-color: #AA7529;
+  color: #75BB88;
+  border-color: #FFFF00;
+  border-width: 5px;
+  border-style: solid;
+  padding: 40px;
+  margin: 100px;
+  width: 70%;
+  font-size: 110% ;
+  font-family: sans-serif;
+  font-weight: bolder ;
+  font-style:oblique ; 
+  background-image: url(images/fondo-03.jpg); 
+  background-repeat: repeat;
+  background-position: top left;  
+}
+
+div.segundo 
+{
+  background-color: #75BB88;
+  color: #AA7529;
+  margin-top: 5px;
+  margin-left: 50px;
+  margin-right: 60px;
+  margin-bottom: 15px;
+  padding-top: 4px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 30px;
+  border-radius: 15px;
+  border-top-color: red;
+  border-top-width: 2px;
+  border-top-style: dashed;
+  border-bottom-width: 5px;
+  border-bottom-color: black;
+  border-bottom-style: dotted;
+  border-left-width: 10px;
+  border-left-color: blue;
+  border-left-style: solid;
+  border-right: 15px dotted gray;
+  font-size: 70%;
+  font-family: serif;
+  font-weight: 100;
+  font-style: italic;
+  text-aling: center;
+  letter-spacing: 5px;
+  line-height: 2em;
+  width: 80%;
+}

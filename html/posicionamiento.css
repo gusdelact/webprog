@@ -1,0 +1,106 @@
+body  {
+ background-color: gray;
+ padding: 10px;
+}
+
+#ironman {
+   width: 280px;
+   background-color: white;
+   font-size: 70%;
+   border:  2px dotted black;
+   position:absolute;
+   right:20px;
+   top: 200px;
+   padding: 2px;
+}
+#ironman img {
+   width: 30%;
+   height: 30%;
+   float: left;
+}
+#thor {
+   width: 280px;
+   background-color: white;
+   font-size: 70%;
+   border:  2px dotted black;
+   position:absolute;
+   right:320px;
+   top: 200px; 
+   padding: 2px;
+}
+#thor img {
+   width: 30%;
+   height: 30%;
+   float: left;
+}
+#capamerica {
+   width: 280px;
+   background-color: white;
+   font-size: 70%;
+   border:  2px dotted black;
+   position:absolute;
+   left:20px;
+   top: 200px;
+   padding: 2px;
+}
+#capamerica img {
+   width: 30%;
+   height: 30%;
+   float: left;
+}
+#hulk {
+   width: 280px;
+   background-color: white;
+   font-size: 70%;
+   border:  2px dotted black;
+   position:absolute;
+   left:320px;
+   top: 200px;
+   padding: 2px;
+}
+#hulk img {
+   width: 30%;
+   height: 30%;
+   float: left;
+}
+@media screen and (min-device-width: 481px) {
+	p {
+	 color: white;
+	 background-color: rgb(95,158,160 );
+	 height: 150px;
+	 padding: 5px;
+	}
+
+	p img {
+	   width: 10%;
+	   height: 90%;
+	   float: left;
+	}
+}
+
+@media screen and (max-device-width: 480px) {
+	p {
+	 color: white;
+	 background-color: rgb(95,158,160 );
+	 height: 150px;
+	 padding: 1px;
+	}
+
+	p img {
+	   width: 5%;
+	   height: 5%;
+	   float: left;
+	}
+}
+
+#logoavengers {
+   position: fixed;
+   bottom:-80px ; 
+   left: 500px ;
+   z-index: -1;
+}
+
+#logoavengers img{
+  width: 30%;
+  height: 30%;
+}

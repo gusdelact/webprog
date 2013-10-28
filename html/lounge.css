@@ -1,0 +1,32 @@
+body
+{
+  font-size: 10px;
+  font-family: serif;
+  color: rgb(220,20,60);
+  background-color: #AFEEEE;
+}
+h1 {font-size: 120%;}
+h2 {font-size: 110%;}
+h1,h2,h3,h4,h5 { 
+  font-family: sans-serif;
+  color:black;
+  border-width : 2px;
+  border-color: black;
+  border-style: dashed;
+}
+p{ 
+  color: maroon;
+  font-size: 105%;   
+  border: 1px dotted gray;
+}
+
+em { font-size: 150%;
+     color: rgb(255,255,127);
+	 font-weight: bold;
+}
+  
+p.greentea 
+{ 
+  color: green;
+  text-align: center;
+}   
